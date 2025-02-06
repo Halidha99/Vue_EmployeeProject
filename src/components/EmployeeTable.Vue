@@ -1,5 +1,5 @@
 <template>
-    <div id="employee-table">
+      <div id="employee-table">
         <table>
             <thead>
                 <tr>
@@ -8,27 +8,34 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr v-for="employee in employees" :key="employee.id">
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.email}}</td>
                     <td>
-                        Kamala 
-                    </td>
-                    <td>kamala99@gmail.com</td>
+                    <button>Edit</button>
+                    <button @click="$emit('delete:employee',employee.id)">Delete</button>
+                </td>
                 </tr>
-                <tr>
-                    <td> Danushka </td>
-                    <td>danushka20@gmail.com</td>
-                </tr>
+                
+                
             </tbody>
         </table>
     </div>
-
 </template>
+
 <script>
 export default {
-    name:'employee-tables'
+    name: 'employee-tables',
+    // data format
+    props:{
+       employees: Array
+    }
 }
 </script>
 
-<style scoped>
+<style>
+button{
+    margin: 0 0.5rem 0 0;
+}
 
 </style>
